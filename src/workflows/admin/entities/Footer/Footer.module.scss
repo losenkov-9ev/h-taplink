@@ -1,0 +1,29 @@
+@use '../../app/styles/variables.scss' as var;
+
+.footer {
+  margin-top: 128px;
+  padding: 32px 0;
+  border-top: 1px solid var(--button);
+
+  &_box {
+    padding: 0 16px;
+    max-width: 1264px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_copy {
+    font-weight: 300;
+    color: var(--field-text);
+  }
+
+  @media (max-width: var.$screen-m) {
+    padding-top: 24px;
+    padding-bottom: 16px;
+    &_box {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

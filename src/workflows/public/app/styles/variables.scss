@@ -1,0 +1,49 @@
+$screen-xxl: 1400px;
+$screen-xl: 1200px;
+$screen-l: 968px;
+$screen-m: 768px;
+$screen-s: 540px;
+$screen-xs: 360px;
+
+$dark: #0a0a0a;
+$second-dark: #141414;
+
+$light: #ffffff;
+$second-light: #f5f5f5;
+
+$dark-gray: #525252;
+$gray: #a3a3a3;
+
+$error: #ff3b30;
+
+$base-transition: all 0.2s;
+
+body {
+  // colors
+  --bg: #{$light};
+  --text: #{$dark};
+
+  --button: #{$second-light};
+  --button-hover: #{$second-dark};
+  --button-active: #{$dark-gray};
+
+  --field: #{$second-light};
+  --field-text: #{$gray};
+  --field-active-text: #{$dark};
+  --field-error: #{$error};
+
+  --icon: #{$gray};
+  --icon-hover: #{$dark};
+  --icon-active: #{$dark-gray};
+
+  // z-index
+  --z-background: -1;
+  --z-standart: 0;
+  --z-first-layer: 5;
+  --z-second-layer: 10;
+  --z-top-layer: 1000;
+
+  // other
+  --transition: #{$base-transition};
+  --default-border-radius: 8px;
+}

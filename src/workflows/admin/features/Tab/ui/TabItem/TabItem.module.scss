@@ -1,0 +1,47 @@
+.tabItem {
+  padding: 8px;
+  padding-right: 10px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 196px;
+  width: 100%;
+
+  background-color: var(--button);
+
+  &_favicon {
+    width: 16px;
+    height: 16px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &_box {
+    gap: 8px;
+    display: flex;
+    align-items: center;
+  }
+  &_name {
+    width: 110px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &_clear {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

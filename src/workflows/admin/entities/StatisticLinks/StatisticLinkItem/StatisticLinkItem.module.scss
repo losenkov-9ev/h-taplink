@@ -1,0 +1,60 @@
+@use '../../../app/styles/variables.scss' as var;
+
+.statisticLinkItem {
+  padding: 9px 16px;
+  background-color: var(--bg);
+  border-radius: 12px;
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px;
+  line-height: 26px;
+
+  &_date,
+  &_count {
+    color: #7a7a7a;
+  }
+  &_value:last-child {
+    flex: none;
+    white-space: nowrap;
+  }
+  &_value {
+    display: flex;
+    gap: 4px;
+    transition: var(--transition);
+
+    span:first-child {
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      text-overflow: ellipsis;
+    }
+    span:last-child {
+      cursor: pointer;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  @media (max-width: var.$screen-m) {
+    &_value:nth-child(2) {
+      text-align: center;
+      justify-content: center;
+    }
+    &_value:last-child {
+      justify-content: flex-end;
+      text-align: right;
+    }
+  }
+  @media (max-width: var.$screen-s) {
+    grid-template-columns: minmax(10px, 1fr) auto;
+    gap: 24px;
+    &_value:nth-child(2) {
+      display: none;
+    }
+  }
+}

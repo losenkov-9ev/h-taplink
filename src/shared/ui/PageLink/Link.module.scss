@@ -1,0 +1,24 @@
+.link {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--icon);
+
+  color: var(--icon);
+  transition: var(--transition);
+
+  &:hover,
+  &.mode_hover {
+    color: var(--icon-hover);
+    text-decoration-color: transparent;
+  }
+
+  &:active,
+  &.mode_active {
+    color: var(--icon-active);
+    text-decoration-color: transparent;
+  }
+}

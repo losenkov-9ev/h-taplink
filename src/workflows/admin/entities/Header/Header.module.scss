@@ -1,0 +1,55 @@
+@use '../../app/styles/variables.scss' as var;
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid var(--button);
+
+  &_logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    max-width: 580px;
+    width: 100%;
+  }
+
+  &_item:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &_menu_mobile {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 0;
+
+    .header_menu {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: var.$screen-xl) {
+    &_container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: var.$screen-s) {
+    padding-bottom: 0;
+    .header_menu {
+      gap: 32px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use '../../../app/styles/variables.scss' as var;
+
+.filling {
+  &_title {
+    margin-bottom: 48px;
+  }
+
+  &_saveButton {
+    margin: 0 auto;
+    display: flex;
+    margin-top: 48px;
+  }
+
+  @media (max-width: var.$screen-m) {
+    &_title {
+      margin-bottom: 24px;
+    }
+    &_saveButton {
+      margin-top: 24px;
+    }
+  }
+}

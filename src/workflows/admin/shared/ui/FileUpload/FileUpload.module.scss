@@ -1,0 +1,108 @@
+.fileUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 300;
+  max-width: 416px;
+  width: 100%;
+
+  &_label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &_box {
+    position: relative;
+  }
+
+  &_input {
+    display: none;
+  }
+
+  &_placeholder {
+    height: 42px;
+    padding: 8px 12px;
+    padding-right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+    background-color: var(--field);
+    color: var(--field-text);
+    border-radius: var(--default-border-radius);
+    cursor: pointer;
+
+    span {
+      display: block;
+
+      max-width: 100%;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    svg {
+      flex: none;
+    }
+    &.fileUpload_error {
+      border: 1px solid var(--field-error);
+      svg path {
+        stroke: var(--field-error) !important;
+      }
+      span {
+        color: var(--field-error);
+      }
+    }
+    &.fileUpload_placeholderWithFile {
+      pointer-events: none;
+    }
+    &:not(.fileUpload_placeholderWithFile) {
+      svg path {
+        transition: var(--transition);
+        stroke: var(--field-text);
+      }
+
+      &:hover {
+        color: var(--field-active-text);
+
+        svg path {
+          stroke: var(--field-active-text);
+        }
+      }
+    }
+  }
+
+  &_clearButton {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+
+      path {
+        transition: var(--transition);
+        stroke: var(--field-text);
+      }
+    }
+    &:hover {
+      svg path {
+        stroke: var(--field-active-text);
+      }
+    }
+  }
+
+  &_tip {
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--icon);
+    &.fileUpload_tip_error {
+      color: var(--field-error);
+    }
+  }
+}

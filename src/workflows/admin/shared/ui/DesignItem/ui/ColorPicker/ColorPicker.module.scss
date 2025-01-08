@@ -1,0 +1,58 @@
+@forward '../DesignItem.module.scss';
+
+.designItem_image {
+  border: 2px solid var(--bg);
+}
+
+.designItem_picker {
+  opacity: 0;
+  transition: var(--transition);
+  &.hovered {
+    opacity: 1;
+  }
+
+  :global {
+    .rcp-root {
+      --rcp-background-color: var(--bg);
+      --rcp-field-input-color: var(--field);
+      --rcp-field-input-border-color: var(--text);
+      --rcp-field-label-color: #000;
+    }
+    .rcp {
+      box-shadow: 2px -2px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+    .rcp-body {
+      padding: 8px;
+      gap: 16px;
+    }
+    .rcp-saturation {
+      border-radius: 4px;
+    }
+    .rcp-saturation-cursor {
+      width: 12px;
+      height: 12px;
+    }
+    .rcp-interactive {
+      padding: 8px;
+      padding-bottom: 0;
+    }
+    .rcp-field-input {
+      border: none;
+      background: var(--field);
+      color: var(--field-text);
+      font-weight: 300;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .rcp-field-label {
+      display: none;
+    }
+    .rcp-hue-cursor {
+      width: 16px;
+      height: 16px;
+      transform: translate(-8px, -2px);
+    }
+  }
+}

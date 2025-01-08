@@ -1,0 +1,31 @@
+@use '../../../app/styles/variables.scss' as var;
+
+.tab {
+  margin-top: 64px;
+
+  &_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 48px;
+  }
+  &_box {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  @media (max-width: var.$screen-s) {
+    &_head {
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    &_box {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+}

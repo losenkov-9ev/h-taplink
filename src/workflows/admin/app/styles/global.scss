@@ -1,0 +1,112 @@
+@use 'reset.scss';
+@use 'fonts.scss';
+@use 'variables.scss';
+@use 'ui-kit.scss';
+
+html {
+  scroll-behavior: smooth;
+  margin: 0 !important;
+  height: 100%;
+}
+
+.container {
+  max-width: 1328px;
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @media (max-width: variables.$screen-xxl) {
+    max-width: 1148px;
+  }
+}
+
+.container-fluid {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+a {
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+body {
+  min-width: 320px;
+  position: relative;
+  overflow-x: clip !important;
+
+  font-family: 'Geologica', sans-serif;
+  font-size: 16px;
+  line-height: 1.25 !important;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+
+  height: 100%;
+
+  &.fixed-modal {
+    overflow: hidden;
+  }
+
+  &.auth {
+    background-color: var(--field);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    #root {
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      width: 100%;
+      padding: 16px;
+    }
+  }
+}
+
+section {
+  overflow-x: clip !important;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content {
+  max-width: 856px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.admin-block {
+  margin-top: 128px;
+  &_title {
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: variables.$screen-s) {
+    &_title {
+      margin-bottom: 24px;
+    }
+  }
+}

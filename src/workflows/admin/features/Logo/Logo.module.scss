@@ -1,0 +1,18 @@
+@use '../../app/styles/variables.scss' as var;
+
+.logo {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (max-width: var.$screen-s) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+    & > div {
+      max-width: 100%;
+    }
+  }
+}

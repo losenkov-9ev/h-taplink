@@ -1,0 +1,30 @@
+@use '../../../app/styles/variables.scss' as var;
+
+.authForm {
+  background-color: var(--bg);
+  padding: 32px;
+  border-radius: 16px;
+  max-width: 416px;
+  width: 100%;
+
+  &_title {
+    margin-bottom: 24px;
+    padding-left: 0;
+  }
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &_button {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @media (max-width: var.$screen-m) {
+    padding: 24px;
+  }
+}

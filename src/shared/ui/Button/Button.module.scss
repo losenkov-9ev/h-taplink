@@ -1,0 +1,47 @@
+.button {
+  background-color: var(--button);
+  transition: var(--transition);
+  text-align: center;
+
+  border-radius: var(--default-border-radius);
+  flex: none;
+
+  padding: 10px 24px;
+
+  &.view_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+    flex: none;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      flex: none;
+
+      path {
+        stroke: var(--text);
+      }
+    }
+  }
+
+  &:hover {
+    background-color: var(--button-hover);
+    color: var(--bg);
+    svg path {
+      stroke: var(--bg);
+    }
+  }
+  &:active {
+    background-color: var(--button-active);
+    color: var(--bg);
+    svg path {
+      stroke: var(--bg);
+    }
+  }
+}
