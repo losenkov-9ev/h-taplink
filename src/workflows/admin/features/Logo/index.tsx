@@ -84,7 +84,7 @@ export const Logo: React.FC = () => {
             onClearFile={() => handleLogoClear(fieldName)}
             clearTrigger={clearTrigger[fieldName]}
             placeholder="Загрузить файл"
-            preloaded={{ url: logoLink[fieldName] }}
+            preloaded={logoLink[fieldName] ? { url: logoLink[fieldName] } : undefined}
           />
         ))
       ) : (

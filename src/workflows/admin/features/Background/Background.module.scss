@@ -10,6 +10,18 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
   }
+  &_head {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  :global {
+    .swiper-pagination {
+      margin-top: 0;
+    }
+  }
 
   @media (max-width: var.$screen-m) {
     &_inner {

@@ -1,10 +1,88 @@
+@use '../../app/styles/variables.scss';
+
 .header {
-  background-color: #fff;
+  background-color: var(--loaded-bg-color);
 
   &_container {
     padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media (max-width: variables.$screen-s) {
+    img {
+      max-width: 200px;
+    }
+  }
+}
+
+:global(.home-page):not(:global(.minimalism), :global(.strict)) {
+  .header {
+    max-width: 636px;
+    width: 100%;
+    border-radius: 24px;
+
+    margin: 0 auto;
+    margin-top: 24px;
+
+    @media (max-width: variables.$screen-s) {
+      border-radius: 16px;
+      margin: 16px;
+      margin-bottom: 0;
+      width: auto;
+      &_container {
+        padding: 8px;
+      }
+    }
+  }
+}
+
+:global(.home-page.glass) {
+  .header {
+    background-color: var(--loaded-bg-color-transparent);
+    border: 1px solid var(--loaded-button-color-transparent);
+    backdrop-filter: blur(64px);
+  }
+}
+:global(.home-page.stone) {
+  .header {
+    background-color: var(--loaded-bg-color-transparent);
+    border: 1px solid var(--loaded-icon-color);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+  }
+}
+:global(.home-page.neon_pink),
+:global(.home-page.neon_blue) {
+  .header {
+    background-color: var(--loaded-bg-color-transparent);
+    border: 1px solid var(--loaded-bg-color);
+    backdrop-filter: blur(64px);
+  }
+}
+
+:global(.home-page.canvas) {
+  .header {
+    border: 2px solid var(--loaded-button-color);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &_container {
+      padding: 24px;
+    }
+
+    @media (max-width: variables.$screen-m) {
+      max-width: 100%;
+      width: auto;
+      margin: 16px;
+      margin-bottom: 0;
+    }
+    @media (max-width: variables.$screen-s) {
+      &_container {
+        padding: 8px;
+        padding-left: 16px;
+      }
+    }
   }
 }

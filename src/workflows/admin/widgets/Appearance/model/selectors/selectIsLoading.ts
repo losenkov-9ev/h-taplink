@@ -2,8 +2,10 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectIsAppearanceLoading = (state: StateSchema) => state.appearence.status;
-export const selectIsDesignsLoading = (state: StateSchema) => state.appearence.designs.status;
+export const selectIsAppearanceLoading = (state: StateSchema) => state.appearance.status;
+export const selectIsDesignsLoading = (state: StateSchema) => state.appearance.designs.status;
+export const selectIsConfigurationsLoading = (state: StateSchema) =>
+  state.appearance.configs.status;
 
 export const selectDesignStatus = createSelector(
   [selectIsDesignsLoading, selectIsAppearanceLoading],

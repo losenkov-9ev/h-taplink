@@ -6,13 +6,17 @@ import { authReducer } from '@/workflows/admin/entities/AuthForm';
 import { tabReducer } from '@/workflows/admin/features/Tab';
 import { appearanceReducer } from '@/workflows/admin/widgets/Appearance';
 import { fillingReducer } from '@/workflows/admin/widgets/Filling/model/slice/slice';
+import { linksReducer } from '@/workflows/admin/entities/ContentLinks/model/slice/slice';
+import { statisticsReducer } from '@/workflows/admin/pages/Statistics';
 
 export function createReduxStore(initialState: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     auth: authReducer,
     tab: tabReducer,
-    appearence: appearanceReducer,
+    appearance: appearanceReducer,
     filling: fillingReducer,
+    links: linksReducer,
+    statistics: statisticsReducer,
   };
 
   return configureStore<StateSchema>({

@@ -24,7 +24,7 @@ interface DesignItemProps {
    */
   preloaded?: {
     url: string;
-  };
+  } | null;
 
   onClick?: () => void;
   onClearFile: () => void;
@@ -39,7 +39,7 @@ export const File: React.FC<DesignItemProps> = (props) => {
     onUploadFile,
     onClearFile,
     clearTrigger,
-    preloaded,
+    preloaded = null,
     onClick,
   } = props;
 

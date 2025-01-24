@@ -1,0 +1,50 @@
+.themeToggler {
+  background-color: var(--loaded-button-color);
+  svg path {
+    stroke: var(--loaded-icon-color) !important;
+  }
+
+  &:hover {
+    background-color: var(--loaded-button-color);
+    opacity: 0.8;
+  }
+}
+
+:global(.home-page.strict) {
+  .themeToggler {
+    border-radius: 0;
+  }
+}
+:global(.home-page.glass) {
+  .themeToggler {
+    border: 1px solid var(--loaded-button-color);
+    background-color: var(--loaded-button-color-transparent);
+    backdrop-filter: blur(64px);
+  }
+}
+
+:global(.home-page.neon_pink),
+:global(.home-page.neon_blue) {
+  .themeToggler {
+    border: 1px solid var(--loaded-button-color);
+    background-color: var(--loaded-button-color-transparent-32);
+    backdrop-filter: blur(64px);
+  }
+}
+
+:global(.home-page.canvas) {
+  .themeToggler {
+    svg path {
+      stroke: var(--loaded-text-color) !important;
+    }
+  }
+}
+
+:global(.home-page.stone) {
+  .themeToggler {
+    background: transparent;
+    svg path {
+      stroke: var(--loaded-text-color) !important;
+    }
+  }
+}

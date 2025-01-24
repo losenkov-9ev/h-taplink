@@ -3,71 +3,41 @@ import cls from './statisticLinks.module.scss';
 import Select from '../../shared/ui/Select';
 import clsx from 'clsx';
 import { StatisticLinkItem } from './StatisticLinkItem/StatisticLinkItem';
+import { useSelector } from 'react-redux';
+import { selectLinksData } from '../ContentLinks/model/selectors/selectData';
+import { formatDate } from '@/shared/lib/formatDate';
 
-const statisticLinksArray = [
-  {
-    link: 'https://link.com',
-    date: '10.29.2024',
-    count: 2162,
-  },
-  {
-    link: 'https://link2.com',
-    date: '11.05.2023',
-    count: 3123,
-  },
-  {
-    link: 'https://very-very-long-link3.com',
-    date: '07.18.2022',
-    count: 4234,
-  },
-  {
-    link: 'https://link4.com',
-    date: '02.14.2023',
-    count: 5345,
-  },
-  {
-    link: 'https://link5.com',
-    date: '09.30.2021',
-    count: 6456,
-  },
-  {
-    link: 'https://link6.com',
-    date: '12.25.2022',
-    count: 7567,
-  },
-  {
-    link: 'https://link7.com',
-    date: '05.07.2024',
-    count: 8678,
-  },
-  {
-    link: 'https://link8.com',
-    date: '08.12.2023',
-    count: 9789,
-  },
-  {
-    link: 'https://link9.com',
-    date: '10.02.2022',
-    count: 10890,
-  },
-  {
-    link: 'https://link10.com',
-    date: '03.15.2025',
-    count: 11901,
-  },
-];
+import { removeProtocol } from '@/shared/lib/removeProtocol';
+import { statsPeriodData } from '../../pages/Statistics';
+import { useStatsPeriod } from '../../shared/lib/hooks/useStatsPeriod';
 
 export const StatisticLinks: React.FC = () => {
+  const links = useSelector(selectLinksData);
+  const { period, handleChangePeriod } = useStatsPeriod();
+
+  const sortedLinks = React.useMemo(() => {
+    return [...links].sort((a, b) => {
+      if (a.deleted === b.deleted) {
+        return 0;
+      }
+      return a.deleted ? 1 : -1;
+    });
+  }, [links]);
+
   return (
     <div className={cls.statisticLinks}>
       <div className={cls.statisticLinks_head}>
         <h1 className={clsx(cls.statisticLinks_title, 'h-2')}>Переход по ссылкам</h1>
         <div className={cls.statisticLinks_controls}>
-          <Select className={cls.statisticLinks_select} placeholder="За все время">
-            <Select.Option value="all">За все время</Select.Option>
-            <Select.Option value="month">За месяц</Select.Option>
-            <Select.Option value="week">За неделю</Select.Option>
-            <Select.Option value="day">За день</Select.Option>
+          <Select
+            onChange={(_, raw) => handleChangePeriod(raw)}
+            className={cls.statisticLinks_select}
+            placeholder={statsPeriodData[period]}>
+            {Object.keys(statsPeriodData).map((period_id, idx) => (
+              <Select.Option key={idx} value={period_id}>
+                {statsPeriodData[period_id as keyof typeof statsPeriodData]}
+              </Select.Option>
+            ))}
           </Select>
         </div>
       </div>
@@ -77,8 +47,16 @@ export const StatisticLinks: React.FC = () => {
         <div className={cls.statisticLinks_tableHead_item}>Переходов</div>
       </div>
       <div className={cls.statisticLinks_box}>
-        {statisticLinksArray.map((item, idx) => (
-          <StatisticLinkItem {...item} key={`${item.link}_${idx}`} />
+        {sortedLinks.map((item, idx) => (
+          <StatisticLinkItem
+            id={item.id}
+            deleted={item.deleted}
+            deletedAt={item.deletedAt}
+            link={removeProtocol(item.url)}
+            date={formatDate(item.createdAt)}
+            period={period}
+            key={idx}
+          />
         ))}
       </div>
     </div>

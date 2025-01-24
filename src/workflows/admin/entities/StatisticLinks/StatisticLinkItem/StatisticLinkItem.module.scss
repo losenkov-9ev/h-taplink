@@ -1,6 +1,64 @@
 @use '../../../app/styles/variables.scss' as var;
 
+.statisticLinkItem_deleted {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px;
+  border: 1px solid #ff3b30;
+  background-color: #ffebed;
+  border-radius: 16px;
+  .statisticLinkItem_deleted_timer {
+    padding: 8px 12px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    background-color: #ff3b30;
+    white-space: nowrap;
+    flex: none;
+    svg {
+      width: 24px;
+      height: 24px;
+
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .statisticLinkItem_deleted_box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 212px;
+  }
+  .statisticLinkItem_deleted_button {
+    border-radius: 12px;
+    &:not(:hover) {
+      background-color: #fff;
+    }
+  }
+  .statisticLinkItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    &_date,
+    &_count {
+      max-width: 100%;
+      width: auto;
+    }
+    &_value {
+      span:first-child {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
 .statisticLinkItem {
+  max-width: 100%;
+  width: 100%;
   padding: 9px 16px;
   background-color: var(--bg);
   border-radius: 12px;

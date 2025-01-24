@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 import { FillingData, FillingSchema } from '../types/fillingSchema';
-import { getContent } from './thunk';
+import { getContent, updateContent } from './thunk';
 
 const initialState: FillingSchema = {
   status: LoadingStatus.LOADING,
@@ -14,7 +14,6 @@ const initialState: FillingSchema = {
     text_3: '',
     title_4: '',
     text_4: '',
-    links: [],
   },
 };
 
@@ -32,6 +31,20 @@ export const fillingSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(getContent.rejected, (state: FillingSchema) => {
+        state.status = LoadingStatus.REJECTED;
+      })
+
+      .addCase(updateContent.pending, (state: FillingSchema) => {
+        state.status = LoadingStatus.LOADING;
+      })
+      .addCase(
+        updateContent.fulfilled,
+        (state: FillingSchema, action: PayloadAction<FillingData>) => {
+          state.status = LoadingStatus.FULFILLED;
+          state.data = action.payload;
+        },
+      )
+      .addCase(updateContent.rejected, (state: FillingSchema) => {
         state.status = LoadingStatus.REJECTED;
       });
   },

@@ -1,3 +1,5 @@
+@use '../../app/styles/variables.scss';
+
 .textBlock {
   display: flex;
   flex-direction: column;
@@ -7,8 +9,12 @@
   &.isFirstBlock {
     padding-top: 64px;
     padding-bottom: 128px;
-    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, var(--loaded-bg-color) 0%, rgba(255, 255, 255, 0) 100%);
 
+    svg,
+    img {
+      margin: 0 auto;
+    }
     .textBlock_title {
       margin-bottom: 24px;
     }
@@ -18,7 +24,189 @@
     margin-bottom: 8px;
   }
   &_content {
-    color: #0a0a0a;
+    color: inherit;
     opacity: 0.64;
+  }
+  &_divider {
+    display: none;
+  }
+
+  @media (max-width: variables.$screen-s) {
+    svg,
+    img {
+      max-width: 232px;
+    }
+    &.isFirstBlock {
+      padding: 64px 24px;
+    }
+    padding: 0 24px;
+    padding-bottom: 64px;
+
+    &_title {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+  }
+}
+
+:global(.home-page):not(:global(.minimalism), :global(.strict)) {
+  .textBlock {
+    padding: 0;
+  }
+  .textBlock + .textBlock {
+    margin-top: 24px;
+  }
+  .textBlock.isFirstBlock {
+    background: transparent;
+    margin: 24px 0;
+
+    .textBlock_inner {
+      padding-top: 48px;
+    }
+  }
+
+  .textBlock_inner {
+    padding: 48px;
+    padding-top: 40px;
+    border-radius: 24px;
+    background: var(--loaded-bg-color);
+  }
+  @media (max-width: variables.$screen-s) {
+    .textBlock {
+      width: auto;
+      margin: 8px 16px !important;
+
+      &:not(.isFirstBlock) {
+        .textBlock_inner {
+          padding-top: 24px;
+        }
+      }
+
+      &_inner {
+        padding: 32px;
+      }
+    }
+  }
+}
+:global(.home-page.glass) {
+  .textBlock {
+    &_inner {
+      border: 1px solid var(--loaded-button-color-transparent);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(64px);
+    }
+  }
+}
+:global(.home-page.stone) {
+  .textBlock {
+    &_inner {
+      border: 1px solid var(--loaded-icon-color);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+    }
+    &:not(.isFirstBlock) {
+      .textBlock_title,
+      .textBlock_inner {
+        text-align: left;
+      }
+      .textBlock_inner {
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: variables.$screen-s) {
+      .textBlock_inner {
+        padding: 24px !important;
+      }
+    }
+  }
+}
+:global(.home-page.neon_pink),
+:global(.home-page.neon_blue) {
+  .textBlock {
+    &_inner {
+      border: 1px solid var(--loaded-bg-color);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(64px);
+    }
+  }
+}
+:global(.home-page.strict) {
+  .textBlock.isFirstBlock {
+    background: transparent;
+    padding-top: 128px;
+
+    .textBlock_inner {
+      padding-bottom: 0;
+    }
+  }
+  .textBlock {
+    &_inner {
+      position: relative;
+      padding-bottom: 72px;
+    }
+    &_divider {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      stop {
+        stop-color: var(--loaded-icon-color);
+      }
+    }
+  }
+}
+
+:global(.home-page.canvas) {
+  .textBlock {
+    margin: 0;
+    svg,
+    img {
+      margin: 0;
+    }
+    &.isFirstBlock {
+      background: transparent;
+      margin: 0;
+
+      .textBlock_inner {
+        padding-top: 32px;
+      }
+    }
+    &_inner {
+      padding: 32px;
+      border-radius: 0;
+      border-right: 2px solid var(--loaded-button-color);
+      border-left: 2px solid var(--loaded-button-color);
+      text-align: left;
+    }
+
+    &:not(.isFirstBlock) {
+      .textBlock_inner {
+        border-bottom: 2px solid var(--loaded-button-color);
+      }
+    }
+    & + .textBlock {
+      margin: 0;
+    }
+
+    @media (max-width: variables.$screen-m) {
+      & + .textBlock {
+        margin: 0 16px;
+      }
+      margin: 0 16px;
+      &.isFirstBlock {
+        margin: 0 16px;
+      }
+      &_inner {
+        max-width: 100%;
+        width: auto;
+        padding: 24px;
+        padding-top: 16px !important;
+      }
+    }
   }
 }

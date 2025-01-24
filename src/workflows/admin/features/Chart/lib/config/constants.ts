@@ -1,3 +1,5 @@
+export const CURRENT_SITE_ID = 'current_site_id';
+
 export const ChartConstants = {
   TICK_COLOR: '#A3A3A3',
   FONT_FAMILY: "'Geologica', 'Courier'",

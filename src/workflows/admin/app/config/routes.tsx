@@ -2,8 +2,8 @@ import { RouteProps } from 'react-router';
 import React from 'react';
 
 const Auth = React.lazy(() => import('../../pages/Auth'));
-const Settings = React.lazy(() => import('../../pages/Settings'));
-const Statistics = React.lazy(() => import('../../pages/Statistics'));
+const Settings = React.lazy(() => import('../../pages/Settings/index'));
+const Statistics = React.lazy(() => import('../../pages/Statistics/ui/index'));
 
 export enum AdminRoutes {
   AUTH = 'auth',

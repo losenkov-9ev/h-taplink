@@ -1,3 +1,3 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-export const selectFont = (state: StateSchema) => state.appearence.data.font;
+export const selectFont = (state: StateSchema) => state.appearance.data.font;

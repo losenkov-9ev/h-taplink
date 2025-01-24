@@ -1,10 +1,5 @@
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 
-export interface LinkItem {
-  name: string;
-  url: string;
-}
-
 export interface FillingData {
   title_1: string;
   text_1: string;
@@ -14,7 +9,6 @@ export interface FillingData {
   text_3: string;
   title_4: string;
   text_4: string;
-  links: LinkItem[];
 }
 
 export interface FillingSchema {

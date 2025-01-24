@@ -1,3 +1,5 @@
+@use '../../app/styles/variables.scss';
+
 .linksBlock {
   margin-bottom: 64px;
   &_title {
@@ -7,7 +9,7 @@
   &_inner {
     padding: 24px;
     padding-top: 32px;
-    background-color: #fff;
+    background-color: var(--loaded-bg-color);
     border-radius: 32px;
   }
   &_box {
@@ -22,10 +24,147 @@
     font-size: 18px;
     line-height: 27px;
     border-radius: 16px;
-    background-color: #f5f5f5;
+    background-color: var(--loaded-button-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: inherit;
+    transition: var(--transition);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: variables.$screen-s) {
+    &_inner {
+      padding: 16px;
+      padding-top: 32px;
+      border-radius: 28px;
+    }
+    &_title {
+      margin-bottom: 16px;
+    }
+    &_box {
+      gap: 8px;
+    }
+    &_link {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 300;
+    }
+  }
+}
+
+:global(.home-page):not(:global(.minimalism), :global(.strict)) {
+  .linksBlock {
+    margin-bottom: 24px;
+  }
+  @media (max-width: variables.$screen-s) {
+    .linksBlock {
+      margin: 0 16px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+:global(.home-page.glass) {
+  .linksBlock {
+    &_inner {
+      border: 1px solid var(--loaded-button-color-transparent);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(64px);
+    }
+    &_link {
+      border: 1px solid var(--loaded-button-color);
+      background-color: var(--loaded-button-color-transparent);
+      backdrop-filter: blur(64px);
+    }
+  }
+}
+
+:global(.home-page.stone) {
+  .linksBlock {
+    &_inner {
+      border: 1px solid var(--loaded-icon-color);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+    }
+    &_link {
+      border-radius: 0;
+      padding: 8px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--loaded-icon-color);
+      background: transparent;
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 8px;
+      }
+    }
+  }
+}
+
+:global(.home-page.neon_pink),
+:global(.home-page.neon_blue) {
+  .linksBlock {
+    &_inner {
+      border: 1px solid var(--loaded-button-color-transparent);
+      background-color: var(--loaded-bg-color-transparent);
+      backdrop-filter: blur(64px);
+    }
+    &_link {
+      border: 1px solid var(--loaded-button-color);
+      background-color: var(--loaded-button-color-transparent-32);
+      backdrop-filter: blur(64px);
+    }
+  }
+}
+
+:global(.home-page.strict) {
+  .linksBlock {
+    &_inner {
+      padding-top: 24px;
+    }
+    &_inner,
+    &_link {
+      border-radius: 0;
+    }
+  }
+}
+
+:global(.home-page.canvas) {
+  .linksBlock {
+    margin-bottom: 0;
+    &_title {
+      text-align: left;
+    }
+    &_inner {
+      padding: 32px;
+      border: 2px solid var(--loaded-button-color);
+      border-radius: 0;
+    }
+    &_link {
+      padding: 16px;
+      font-weight: 300;
+    }
+
+    @media (max-width: variables.$screen-m) {
+      &_inner {
+        max-width: 100%;
+        width: auto;
+        margin: 0 16px;
+      }
+    }
+    @media (max-width: variables.$screen-s) {
+      &_title {
+        margin-bottom: 8px;
+      }
+      &_inner {
+        margin: 0;
+        padding: 24px;
+        padding-top: 16px;
+      }
+    }
   }
 }

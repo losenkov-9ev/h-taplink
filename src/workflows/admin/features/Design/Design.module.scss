@@ -8,43 +8,4 @@
     align-items: center;
     justify-content: space-between;
   }
-
-  .design_navigation {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .design_navigation_prev,
-  .design_navigation_next {
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-
-    flex: none;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-  :global {
-    .swiper-slide {
-      box-sizing: border-box;
-    }
-    .swiper-pagination {
-      position: static;
-      margin-top: 8px;
-    }
-    .swiper-pagination-bullet {
-      background-color: var(--field-text);
-      transition: var(--transition);
-      opacity: 0.7;
-      border-radius: 12px;
-    }
-    .swiper-pagination-bullet-active {
-      background-color: var(--text);
-      opacity: 1;
-      width: 32px;
-    }
-  }
 }

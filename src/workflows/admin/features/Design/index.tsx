@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import cls from './Design.module.scss';
 import clsx from 'clsx';
 
@@ -17,59 +17,67 @@ import { selectCurrentDesign } from '../../widgets/Appearance';
 import { selectAllDesigns } from '../../widgets/Appearance/model/selectors/selectDesign';
 import { config } from './config';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
-import { getDesignTypes } from '../../widgets/Appearance/model/slice/thunks';
+import { getConfig, getDesignTypes } from '../../widgets/Appearance/model/slice/thunks';
 import { selectDesignStatus } from '../../widgets/Appearance/model/selectors/selectIsLoading';
 import { LoadingStatus } from '../../shared/lib/types/loading';
 import { useFormData } from '../../shared/lib';
 
 export const Design: React.FC = () => {
   const formData = useFormData();
-
   const dispatch = useAppDispatch();
-
   const currentItem = useSelector(selectCurrentDesign);
 
   const designItems = useSelector(selectAllDesigns);
   const designStatus = useSelector(selectDesignStatus);
 
-  const [selectedItem, setSelectedItem] = React.useState<string>('');
-  const sliderRef = React.useRef<null | SwiperRef>(null);
+  const [selectedItem, setSelectedItem] = useState<string>('');
+  const sliderRef = useRef<SwiperRef>(null);
 
-  const handlePrev = React.useCallback(() => {
+  const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slidePrev();
   }, []);
 
-  const handleNext = React.useCallback(() => {
+  const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
   }, []);
 
   const handleSelectItem = (id: string) => {
     setSelectedItem(id);
+    dispatch(getConfig(id));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getDesignTypes());
   }, [dispatch]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSelectedItem(currentItem);
   }, [currentItem]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     formData.set('design', selectedItem);
   }, [selectedItem, formData]);
+
+  useEffect(() => {
+    if (designStatus === LoadingStatus.FULFILLED && sliderRef.current && designItems.length > 0) {
+      const activeIndex = designItems.findIndex((item) => item.name_id === currentItem);
+      if (activeIndex !== -1) {
+        sliderRef.current.swiper.slideTo(activeIndex, 500, false);
+      }
+    }
+  }, [designStatus, currentItem, designItems]);
 
   return (
     <div className={cls.design}>
       <div className={cls.design_head}>
         <div className={clsx(cls.design_title, 's-1')}>Оформление</div>
-        <div className={cls.design_navigation}>
-          <span className={cls.design_navigation_prev} onClick={handlePrev}>
+        <div className="default_slider_navigation">
+          <span className="default_slider_navigation_prev" onClick={handlePrev}>
             <ArrowLeft />
           </span>
-          <span className={cls.design_navigation_next} onClick={handleNext}>
+          <span className="default_slider_navigation_next" onClick={handleNext}>
             <ArrowRight />
           </span>
         </div>

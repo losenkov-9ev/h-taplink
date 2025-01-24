@@ -3,13 +3,24 @@ import {
   AppearanceData,
   AppearanceSchema,
   BackgroundItem,
+  ConfigItem,
   DesignItem,
 } from '../types/appearanceSchema';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getAppearance, getBackgrounds, getDesignTypes, updateAppearance } from './thunks';
+import {
+  getAppearance,
+  getBackgrounds,
+  getConfig,
+  getDesignTypes,
+  updateAppearance,
+} from './thunks';
 
 const initialState: AppearanceSchema = {
   status: LoadingStatus.LOADING,
+  configs: {
+    status: LoadingStatus.LOADING,
+    data: {},
+  },
   designs: {
     status: LoadingStatus.LOADING,
     data: [],
@@ -54,6 +65,7 @@ export const appearanceSlice = createSlice({
         getAppearance.fulfilled,
         (state: AppearanceSchema, action: PayloadAction<AppearanceData>) => {
           state.status = LoadingStatus.FULFILLED;
+          state.configs.status = LoadingStatus.FULFILLED;
           state.data = action.payload;
         },
       )
@@ -101,6 +113,29 @@ export const appearanceSlice = createSlice({
       )
       .addCase(getBackgrounds.rejected, (state: AppearanceSchema) => {
         state.backgrounds.status = LoadingStatus.REJECTED;
+      })
+
+      .addCase(getConfig.pending, (state: AppearanceSchema) => {
+        state.configs.status = LoadingStatus.LOADING;
+      })
+      .addCase(
+        getConfig.fulfilled,
+        (
+          state: AppearanceSchema,
+          action: PayloadAction<ConfigItem, string, { arg: string }, never>,
+        ) => {
+          state.configs.status = LoadingStatus.FULFILLED;
+
+          const id = action.meta.arg;
+          state.configs.data[id] = action.payload;
+
+          state.data.dark_theme_colors = state.configs.data[id].dark_theme_colors;
+          state.data.light_theme_colors = state.configs.data[id].light_theme_colors;
+          state.data.background = state.configs.data[id].background;
+        },
+      )
+      .addCase(getConfig.rejected, (state: AppearanceSchema) => {
+        state.configs.status = LoadingStatus.REJECTED;
       });
   },
 });

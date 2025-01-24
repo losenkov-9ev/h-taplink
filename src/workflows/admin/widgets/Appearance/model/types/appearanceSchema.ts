@@ -1,5 +1,11 @@
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 
+export interface ConfigItem {
+  light_theme_colors: ColorTheme;
+  dark_theme_colors: ColorTheme;
+  background: string;
+}
+
 export interface ColorTheme {
   text: string;
   icons: string;
@@ -14,7 +20,11 @@ export interface DesignItem {
 }
 
 export interface BackgroundItem {
-  image: string;
+  image: {
+    preview: string;
+    dark_theme_image: string;
+    light_theme_image: string;
+  };
   name: string;
   name_id: string;
 }
@@ -33,6 +43,10 @@ export interface AppearanceData {
 
 export interface AppearanceSchema {
   status: LoadingStatus;
+  configs: {
+    status: LoadingStatus;
+    data: Record<string, ConfigItem>;
+  };
   designs: {
     status: LoadingStatus;
     data: DesignItem[];
