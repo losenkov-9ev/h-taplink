@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Id, Slide, toast, ToastContent, ToastOptions } from 'react-toastify';
 
 export enum ToastType {
@@ -24,11 +25,11 @@ const options: ToastOptions = {
 };
 
 export const useToast = () => {
-  const notify = (message: ToastContent, type: ToastType) => {
+  const notify = useCallback((message: ToastContent, type: ToastType) => {
     toast[type](message, options);
-  };
+  }, []);
 
-  const loading = (message: ToastContent): Id => {
+  const loading = useCallback((message: ToastContent): Id => {
     const loadingToastId = toast.loading(message, {
       position: 'top-right',
       hideProgressBar: false,
@@ -36,9 +37,9 @@ export const useToast = () => {
       transition: Slide,
     });
     return loadingToastId; // Возвращаем ID уведомления для обновления
-  };
+  }, []);
 
-  const updateLoading = (id: Id, message: ToastContent, type: ToastType) => {
+  const updateLoading = useCallback((id: Id, message: ToastContent, type: ToastType) => {
     toast.update(id, {
       render: message,
       type: type,
@@ -46,7 +47,7 @@ export const useToast = () => {
       autoClose: 3000,
       closeOnClick: true,
     });
-  };
+  }, []);
 
   return { notify, loading, updateLoading };
 };

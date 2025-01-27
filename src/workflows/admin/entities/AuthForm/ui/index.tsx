@@ -10,6 +10,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
 import { fetchAuthData } from '../model/slice/thunk';
 import { AuthParams } from '../model/types/thunkTypes';
+import { useSelector } from 'react-redux';
+import { selectAuthError } from '../model/selectors/selectError';
+import { ToastType, useToast } from '@/workflows/admin/shared/lib/hooks/useToast';
 
 export const AuthForm: React.FC = () => {
   const {
@@ -20,6 +23,8 @@ export const AuthForm: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { notify } = useToast();
+  const authError = useSelector(selectAuthError);
 
   const onSubmit: SubmitHandler<AuthParams> = async (data) => {
     try {
@@ -33,19 +38,30 @@ export const AuthForm: React.FC = () => {
     }
   };
 
+  React.useEffect(() => {
+    if (authError) {
+      notify(authError, ToastType.Error);
+    }
+  }, [authError, notify]);
+
   return (
     <form className={cls.authForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={clsx(cls.authForm_title, 's-1')}>Вход в аккаунт</div>
       <div className={cls.authForm_box}>
         {/* Поле логина */}
         <div className={cls.authForm_field}>
-          <Input placeholder="Логин" {...register('username', { required: 'Логин обязателен' })} />
+          <Input
+            placeholder="Логин"
+            isError={Boolean(errors.username?.message)}
+            {...register('username', { required: 'Логин обязателен' })}
+          />
           {errors.username && <div className={cls.authForm_error}>{errors.username.message}</div>}
         </div>
 
         {/* Поле пароля */}
         <div className={cls.authForm_field}>
           <Input
+            isError={Boolean(errors.password?.message)}
             placeholder="Пароль"
             type="password"
             {...register('password', { required: 'Пароль обязателен' })}

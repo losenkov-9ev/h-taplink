@@ -1,8 +1,8 @@
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 import { AuthSchema } from '../types/authSchema';
 import { fetchAuthData, fetchAuthMe, fetchLogout } from './thunk';
-import { ErrorPayload } from '@/workflows/admin/shared/lib/types/errors';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthAPIError } from '../types/thunkTypes';
 
 const initialState: AuthSchema = {
   status: LoadingStatus.LOADING,
@@ -26,8 +26,10 @@ const authSlice = createSlice({
     builder.addCase(fetchAuthData.fulfilled, (state: AuthSchema) => {
       state.status = LoadingStatus.FULFILLED;
     });
-    builder.addCase(fetchAuthData.rejected, (state: AuthSchema, action: ErrorPayload) => {
-      state.error = action.payload?.message || null;
+    builder.addCase(fetchAuthData.rejected, (state: AuthSchema, action: PayloadAction<unknown>) => {
+      console.log(action.payload);
+
+      state.error = (action.payload as AuthAPIError).message;
       state.status = LoadingStatus.REJECTED;
     });
     builder.addCase(fetchAuthMe.pending, (state: AuthSchema) => {

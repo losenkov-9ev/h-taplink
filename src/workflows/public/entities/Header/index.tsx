@@ -1,7 +1,7 @@
 import React from 'react';
 import cls from './Header.module.scss';
 import LogoIcon from '@images/logo.svg';
-import { ThemeToggler } from '../../shared/ThemeToggler';
+import { ThemeToggler } from '../../shared/ui/ThemeToggler';
 import { useSelector } from 'react-redux';
 import { selectLogotypes } from '@/workflows/admin/widgets/Appearance/model/selectors/selectLogos';
 

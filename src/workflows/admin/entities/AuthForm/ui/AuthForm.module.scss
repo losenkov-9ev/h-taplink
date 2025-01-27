@@ -12,6 +12,12 @@
     padding-left: 0;
   }
 
+  &_error {
+    color: var(--field-error);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
   &_box {
     display: flex;
     flex-direction: column;

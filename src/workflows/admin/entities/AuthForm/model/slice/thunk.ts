@@ -1,18 +1,18 @@
-import { handleAxiosError, RejectType } from '@/workflows/admin/shared/lib/utils/handleAxiosError';
+import { handleAxiosError } from '@/workflows/admin/shared/lib/utils/handleAxiosError';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthAPIResponce, AuthParams } from '../types/thunkTypes';
+import { AuthAPIError, AuthParams } from '../types/thunkTypes';
 
 import axios from '@admin/shared/lib/config/AxiosConfig';
 
-export const fetchAuthData = createAsyncThunk<AuthAPIResponce, AuthParams, RejectType>(
+export const fetchAuthData = createAsyncThunk(
   'auth/fetchAuthData',
-  async (params, { dispatch, rejectWithValue }) => {
+  async (params: AuthParams, { dispatch, rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/login/', params);
       await dispatch(fetchAuthMe());
       return data;
     } catch (error) {
-      return rejectWithValue(handleAxiosError(error, 'Ошибка авторизации'));
+      return rejectWithValue((error as AuthAPIError).response?.data.error || 'Ошибка входа');
     }
   },
 );

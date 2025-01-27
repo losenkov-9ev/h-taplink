@@ -31,7 +31,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 212px;
   }
   .statisticLinkItem_deleted_button {
     border-radius: 12px;
@@ -55,7 +54,44 @@
       }
     }
   }
+
+  @media (max-width: var.$screen-m) {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 4px;
+
+    .statisticLinkItem_value {
+      span:first-child {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+        text-overflow: ellipsis;
+      }
+    }
+    .statisticLinkItem_date {
+      display: none;
+    }
+    .statisticLinkItem_deleted_box {
+      max-width: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 2fr;
+      gap: 4px;
+    }
+    .statisticLinkItem_deleted_button {
+      display: block;
+      border-radius: 12px;
+      padding: 8px;
+    }
+    .statisticLinkItem_deleted_timer {
+      border-radius: 12px;
+      padding: 6px 8px;
+    }
+  }
 }
+
 .statisticLinkItem {
   max-width: 100%;
   width: 100%;

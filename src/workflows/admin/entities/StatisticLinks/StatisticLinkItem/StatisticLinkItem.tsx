@@ -7,22 +7,19 @@ import CopiedIcon from '@images/copied.svg';
 
 import { useCopyToClipboard } from '@/workflows/admin/shared/lib';
 import { formatNumberWithDelimiter } from '@/workflows/admin/shared/lib/utils/formatNumberWithDelimiter';
-import { StateSchema, useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
+import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
 
 import { useSelector } from 'react-redux';
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 import { StatisticLinkSkeleton } from './StatisticLinkSkeleton';
-import {
-  getLinkStats,
-  selectLinkStatsCount,
-  selectLinkStatsStatus,
-  StatsPeriod,
-} from '@/workflows/admin/pages/Statistics';
+import { selectLinkStatsCount, StatsPeriod } from '@/workflows/admin/pages/Statistics';
 
 import TimerIcon from '@images/timer.svg';
 import { Button } from '@/shared/ui/Button';
 import { getDaysUntilInactive } from '@/workflows/admin/shared/lib/utils/dateInterval';
 import { restoreLink } from '../../ContentLinks/model/slice/thunks';
+import { getLinkStatsCount } from '@/workflows/admin/pages/Statistics/model/slice/thunks';
+import { selectLinkStatsCountStatus } from '@/workflows/admin/pages/Statistics/model/selectors/selectStatus';
 
 interface StatisticLinkItemProps {
   id: number;
@@ -39,8 +36,8 @@ export const StatisticLinkItem: React.FC<StatisticLinkItemProps> = (props) => {
 
   const dispatch = useAppDispatch();
 
-  const count = useSelector((state: StateSchema) => selectLinkStatsCount(id)(state));
-  const status = useSelector(selectLinkStatsStatus(id));
+  const count = useSelector(selectLinkStatsCount(id));
+  const status = useSelector(selectLinkStatsCountStatus(id));
 
   const handleItemClick = () => {
     console.log('item');
@@ -57,7 +54,7 @@ export const StatisticLinkItem: React.FC<StatisticLinkItemProps> = (props) => {
 
   React.useEffect(() => {
     dispatch(
-      getLinkStats({
+      getLinkStatsCount({
         id,
         period,
       }),

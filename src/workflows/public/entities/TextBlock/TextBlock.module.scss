@@ -195,9 +195,9 @@
 
     @media (max-width: variables.$screen-m) {
       & + .textBlock {
-        margin: 0 16px;
+        margin: 0 16px !important;
       }
-      margin: 0 16px;
+      margin: 0 16px !important;
       &.isFirstBlock {
         margin: 0 16px;
       }

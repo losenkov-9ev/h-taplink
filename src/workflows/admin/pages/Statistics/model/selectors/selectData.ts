@@ -1,18 +1,16 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { CURRENT_SITE_ID } from '@/workflows/admin/features/Chart/lib/config/constants';
-import { createSelector } from '@reduxjs/toolkit';
 
 export const selectLinkStats = (id: number) => (state: StateSchema) =>
-  state.statistics.links[id]?.data;
+  state.statistics.links[id]?.data || {
+    labels: [''],
+    dataPoints: [0],
+  };
 
 export const selectSiteStats = (state: StateSchema) => state.statistics.site.data;
 
-export const selectLinkStatsCount = (id: number) =>
-  createSelector([selectLinkStats(id)], (linkStats) => {
-    return linkStats?.dataPoints
-      ? linkStats.dataPoints.reduce((acc, currentValue) => Number(acc) + Number(currentValue), 0)
-      : 0;
-  });
+export const selectLinkStatsCount = (id: number) => (state: StateSchema) =>
+  state.statistics.linksCount[id]?.data;
 
 export const selectStats = (id: string) => (state: StateSchema) => {
   if (id === CURRENT_SITE_ID) {

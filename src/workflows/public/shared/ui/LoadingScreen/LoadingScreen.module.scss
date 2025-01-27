@@ -1,0 +1,38 @@
+@use '../../../app/styles/variables.scss' as var;
+
+.loadingScreen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Белый фон внизу */
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.loadingBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.5s;
+  background-color: #000;
+}
+
+.loadingText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 128px;
+  line-height: 120%;
+  font-weight: 500;
+  color: #fff;
+  mix-blend-mode: difference;
+  -webkit-font-smoothing: antialiased;
+
+  @media (max-width: var.$screen-m) {
+    font-size: 80px;
+  }
+}

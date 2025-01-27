@@ -16,7 +16,7 @@ import { ApiError } from '../types/errors';
 export type RejectType = {
   rejectValue: {
     status: number;
-    message: string | undefined;
+    message: string;
   };
 };
 

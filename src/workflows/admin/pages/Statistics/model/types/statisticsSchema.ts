@@ -23,7 +23,13 @@ interface StatsElement {
   data: StatsData;
 }
 
+interface StatsCountElement {
+  status: LoadingStatus;
+  data: number;
+}
+
 export interface StatisticsSchema {
   site: StatsElement;
   links: Record<number, StatsElement>;
+  linksCount: Record<number, StatsCountElement>;
 }
