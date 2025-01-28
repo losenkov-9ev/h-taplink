@@ -13,7 +13,7 @@ import { DEFAULT_WINDOW_WIDTH } from '@/app/global';
 import { useMediaQuery } from 'react-responsive';
 import clsx from 'clsx';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
-import { fetchLogout } from '../AuthForm/model/slice/thunk';
+import { fetchLogout } from '../AuthForm';
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();

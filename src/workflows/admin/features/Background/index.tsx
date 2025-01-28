@@ -12,13 +12,14 @@ import {
   selectBackgroundFile,
   selectBackgroundStatus,
   selectCurrentBg,
-} from '../../widgets/Appearance/model/selectors/selectBackground';
-import { getBackgrounds } from '../../widgets/Appearance/model/slice/thunks';
+  selectIsConfigurationsLoading,
+  getBackgrounds,
+} from '../../widgets/Appearance';
+
 import { LoadingStatus } from '../../shared/lib/types/loading';
 
 import { DesignItem, DesignItemFile, DesignItemSkeleton } from '../../shared/ui/DesignItem';
 import { useFormData } from '../../shared/lib';
-import { selectIsConfigurationsLoading } from '../../widgets/Appearance/model/selectors/selectIsLoading';
 
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { swiperConfig } from './config';

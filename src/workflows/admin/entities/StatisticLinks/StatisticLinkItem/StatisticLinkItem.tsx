@@ -17,9 +17,9 @@ import { selectLinkStatsCount, StatsPeriod } from '@/workflows/admin/pages/Stati
 import TimerIcon from '@images/timer.svg';
 import { Button } from '@/shared/ui/Button';
 import { getDaysUntilInactive } from '@/workflows/admin/shared/lib/utils/dateInterval';
-import { restoreLink } from '../../ContentLinks/model/slice/thunks';
-import { getLinkStatsCount } from '@/workflows/admin/pages/Statistics/model/slice/thunks';
-import { selectLinkStatsCountStatus } from '@/workflows/admin/pages/Statistics/model/selectors/selectStatus';
+import { restoreLink } from '../../ContentLinks';
+import { getLinkStatsCount } from '@/workflows/admin/pages/Statistics';
+import { selectLinkStatsCountStatus } from '@/workflows/admin/pages/Statistics';
 
 interface StatisticLinkItemProps {
   id: number;

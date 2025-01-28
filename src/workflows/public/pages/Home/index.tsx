@@ -6,7 +6,7 @@ import { TextBlock } from '../../entities/TextBlock';
 import { LinksBlock } from '../../entities/LinksBlock';
 import { Footer } from '../../entities/Footer';
 import { useSelector } from 'react-redux';
-import { selectContent } from '@/workflows/admin/widgets/Filling/model/selectors/selectContent';
+import { selectContent } from '@/workflows/admin/widgets/Filling';
 import { useAppearance } from '../../shared/lib/hooks/useAppearance';
 import { useSnowflakes } from '../../shared/lib/hooks/useSnowflakes';
 import { selectCurrentDesign } from '@/workflows/admin/widgets/Appearance';

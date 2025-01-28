@@ -4,7 +4,7 @@ import Select from '../../shared/ui/Select';
 import clsx from 'clsx';
 import { StatisticLinkItem } from './StatisticLinkItem/StatisticLinkItem';
 import { useSelector } from 'react-redux';
-import { selectLinksData } from '../ContentLinks/model/selectors/selectData';
+import { selectLinksData } from '../ContentLinks';
 import { formatDate } from '@/shared/lib/formatDate';
 
 import { removeProtocol } from '@/shared/lib/removeProtocol';

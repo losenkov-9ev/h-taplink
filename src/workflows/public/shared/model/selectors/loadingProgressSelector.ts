@@ -1,9 +1,9 @@
-import { selectLinksStatus } from '@/workflows/admin/entities/ContentLinks/model/selectors/selectStatus';
+import { selectLinksStatus } from '@/workflows/admin/entities/ContentLinks';
 import { selectTabStatus } from '@/workflows/admin/features/Tab';
 import { LoadingStatus } from '@/workflows/admin/shared/lib/types/loading';
 import { selectIsAppearanceLoading } from '@/workflows/admin/widgets/Appearance';
-import { selectAllBackgroundsStatus } from '@/workflows/admin/widgets/Appearance/model/selectors/selectBackground';
-import { selectContentStatus } from '@/workflows/admin/widgets/Filling/model/selectors/selectContentStatus';
+import { selectAllBackgroundsStatus } from '@/workflows/admin/widgets/Appearance';
+import { selectContentStatus } from '@/workflows/admin/widgets/Filling';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectLoadingProgress = createSelector(

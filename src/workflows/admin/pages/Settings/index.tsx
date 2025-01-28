@@ -3,21 +3,21 @@ import { Header } from '../../entities/Header';
 import { Tab } from '../../features/Tab';
 import { Footer } from '../../entities/Footer';
 import { useSelector } from 'react-redux';
-import { selectIsAuth } from '../../entities/AuthForm';
+import { selectIsAuth, selectAuthStatus } from '../../entities/AuthForm';
 import { Navigate } from 'react-router';
 import { createLinkPath } from '../../shared/lib/utils/createLinkPath';
 import { AdminRoutePath } from '../../app/config/routes';
 import { Appearance } from '../../widgets/Appearance';
 import { Filling } from '../../widgets/Filling';
-import { selectAuthStatus } from '../../entities/AuthForm/model/selectors/status';
 import { LoadingStatus } from '../../shared/lib/types/loading';
+import { PageLoader } from '@/shared/ui/PageLoader';
 
 const Settings: React.FC = () => {
   const isAuth = useSelector(selectIsAuth);
   const isAuthLoading = useSelector(selectAuthStatus);
 
   if (isAuthLoading === LoadingStatus.LOADING) {
-    return <div>Загрузка...</div>;
+    return <PageLoader />;
   }
 
   if (!isAuth) {

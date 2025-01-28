@@ -1,5 +1,6 @@
-import { selectFont } from '@/workflows/admin/widgets/Appearance/model/selectors/selectFonts';
 import React from 'react';
+
+import { selectFont } from '@/workflows/admin/widgets/Appearance';
 import { useSelector } from 'react-redux';
 
 export const usePublicFont = () => {

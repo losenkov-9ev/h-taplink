@@ -18,11 +18,11 @@ import Select from '../../../shared/ui/Select';
 import { calculateStepSize } from '../lib/calculateStepSize';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import { selectStats } from '@/workflows/admin/pages/Statistics/model/selectors/selectData';
+import { selectStats } from '@/workflows/admin/pages/Statistics';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
 import { getLinkStats, getSiteStats, statsPeriodData } from '@/workflows/admin/pages/Statistics';
 import { useStatsPeriod } from '@/workflows/admin/shared/lib/hooks/useStatsPeriod';
-import { selectLinksData } from '@/workflows/admin/entities/ContentLinks/model/selectors/selectData';
+import { selectLinksData } from '@/workflows/admin/entities/ContentLinks';
 import { CURRENT_SITE_ID } from '../lib/config/constants';
 
 ChartJS.register(

@@ -3,14 +3,17 @@ import { DesignItemColorPicker, DesignItemSkeleton } from '../../shared/ui/Desig
 
 import cls from './Colors.module.scss';
 import clsx from 'clsx';
+
 import { useSelector } from 'react-redux';
-import { selectColors } from '../../widgets/Appearance/model/selectors/selectColors';
 import { debounce } from '@/shared/lib/debounce';
 import { useFormData } from '../../shared/lib';
+
 import {
   selectIsAppearanceLoading,
   selectIsConfigurationsLoading,
-} from '../../widgets/Appearance/model/selectors/selectIsLoading';
+  selectColors,
+} from '../../widgets/Appearance';
+
 import { LoadingStatus } from '../../shared/lib/types/loading';
 
 const colorNames = ['Текст', 'Иконки', 'Кнопки', 'Фон'];

@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { CURRENT_SITE_ID } from '@/workflows/admin/features/Chart/lib/config/constants';
+import { CURRENT_SITE_ID } from '@/workflows/admin/features/Chart';
 
 export const selectLinkStats = (id: number) => (state: StateSchema) =>
   state.statistics.links[id]?.data || {

@@ -8,7 +8,7 @@ import { FontItem, FontItemProps } from './FontItem';
 import { loadFont, removeFont, useFormData } from '@/workflows/admin/shared/lib';
 import { debounce } from '@/shared/lib/debounce';
 import { useSelector } from 'react-redux';
-import { selectFont } from '@/workflows/admin/widgets/Appearance/model/selectors/selectFonts';
+import { selectFont } from '@/workflows/admin/widgets/Appearance';
 
 export interface FontResponceItem {
   family: string;

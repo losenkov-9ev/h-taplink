@@ -1,13 +1,10 @@
 import React from 'react';
 
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
-import { getTab } from '@/workflows/admin/features/Tab/model/slice/thunk';
-import {
-  getAppearance,
-  getBackgrounds,
-} from '@/workflows/admin/widgets/Appearance/model/slice/thunks';
+import { getTab } from '@/workflows/admin/features/Tab';
+import { getAppearance, getBackgrounds } from '@/workflows/admin/widgets/Appearance';
 import { getLinks } from '@/workflows/admin/entities/ContentLinks';
-import { getContent } from '@/workflows/admin/widgets/Filling/model/slice/thunk';
+import { getContent } from '@/workflows/admin/widgets/Filling';
 
 export const useFetchPublicData = () => {
   const dispatch = useAppDispatch();

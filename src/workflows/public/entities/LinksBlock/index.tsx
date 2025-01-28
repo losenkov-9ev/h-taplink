@@ -4,7 +4,7 @@ import cls from './LinksBlock.module.scss';
 import AngleRightIcon from '@images/angle-right.svg';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import { selectActiveLinks } from '@/workflows/admin/entities/ContentLinks/model/selectors/selectData';
+import { selectActiveLinks } from '@/workflows/admin/entities/ContentLinks';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
 import { addLinkClick } from '@/workflows/admin/pages/Statistics';
 

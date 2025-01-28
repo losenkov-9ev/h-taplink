@@ -13,12 +13,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { useSelector } from 'react-redux';
-import { selectCurrentDesign } from '../../widgets/Appearance';
-import { selectAllDesigns } from '../../widgets/Appearance/model/selectors/selectDesign';
+
+import {
+  selectCurrentDesign,
+  selectAllDesigns,
+  getConfig,
+  getDesignTypes,
+  selectDesignStatus,
+} from '../../widgets/Appearance';
+
 import { config } from './config';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
-import { getConfig, getDesignTypes } from '../../widgets/Appearance/model/slice/thunks';
-import { selectDesignStatus } from '../../widgets/Appearance/model/selectors/selectIsLoading';
 import { LoadingStatus } from '../../shared/lib/types/loading';
 import { useFormData } from '../../shared/lib';
 

@@ -6,7 +6,7 @@ import LogoIcon from '@images/logo-tablet.svg';
 import Divider from '@images/strict-text-divider.svg';
 
 import { useSelector } from 'react-redux';
-import { selectLogotypes } from '@/workflows/admin/widgets/Appearance/model/selectors/selectLogos';
+import { selectLogotypes } from '@/workflows/admin/widgets/Appearance';
 
 interface TextBlockProps {
   isFirstBlock?: boolean;

@@ -1,13 +1,14 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { ETheme, useTheme } from '@/app/providers/ThemeProvider';
 import {
   selectAllBackgrounds,
   selectBackgroundFile,
   selectCurrentBg,
-} from '@/workflows/admin/widgets/Appearance/model/selectors/selectBackground';
-import { selectColors } from '@/workflows/admin/widgets/Appearance/model/selectors/selectColors';
-import { selectFont } from '@/workflows/admin/widgets/Appearance/model/selectors/selectFonts';
-import React from 'react';
-import { useSelector } from 'react-redux';
+  selectColors,
+  selectFont,
+} from '@/workflows/admin/widgets/Appearance';
 
 export const useAppearance = () => {
   const { theme } = useTheme();

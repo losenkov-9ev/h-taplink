@@ -2,14 +2,14 @@ import React from 'react';
 import './styles/global.scss';
 
 import { Outlet } from 'react-router-dom';
-import { getTab } from '../features/Tab/model/slice/thunk';
-import { getAppearance } from '../widgets/Appearance/model/slice/thunks';
+import { getTab } from '../features/Tab';
+import { getAppearance } from '../widgets/Appearance';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../entities/AuthForm';
 import { SaveProvider } from '@/app/providers/SaveContentProvider';
 import { DataProvider } from '@/app/providers/DataProvider';
-import { selectAuthStatus } from '../entities/AuthForm/model/selectors/status';
+import { selectAuthStatus } from '../entities/AuthForm';
 import { LoadingStatus } from '../shared/lib/types/loading';
 
 export const AdminApp: React.FC = () => {

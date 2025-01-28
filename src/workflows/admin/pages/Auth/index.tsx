@@ -1,13 +1,12 @@
 import React from 'react';
-import { AuthForm, selectIsAuth } from '../../entities/AuthForm';
+
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
-import { createLinkPath } from '../../shared/lib/utils/createLinkPath';
 import { AdminRoutePath } from '../../app/config/routes';
-import { selectAuthStatus } from '../../entities/AuthForm/model/selectors/status';
 import { LoadingStatus } from '../../shared/lib/types/loading';
+import { createLinkPath } from '../../shared/lib/utils/createLinkPath';
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/StateSchema';
-import { fetchAuthMe } from '../../entities/AuthForm/model/slice/thunk';
+import { AuthForm, selectIsAuth, selectAuthStatus, fetchAuthMe } from '../../entities/AuthForm';
 
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
