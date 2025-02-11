@@ -9,6 +9,8 @@
     margin: 0 auto;
     display: flex;
     margin-top: 48px;
+    color: var(--text);
+    background-color: var(--button);
   }
 
   @media (max-width: var.$screen-m) {

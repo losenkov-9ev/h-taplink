@@ -28,6 +28,8 @@
   &_button {
     max-width: 100%;
     width: 100%;
+    color: var(--text);
+    background-color: var(--button);
   }
 
   @media (max-width: var.$screen-m) {

@@ -66,7 +66,7 @@ export const Chart: React.FC = () => {
       <div className={cls.chart}>
         <div className={cls.chart_inner}>
           <div className={cls.chart_head}>
-            <h1 className={clsx(cls.chart_title, 'h-2')}>График выручки</h1>
+            <h1 className={clsx(cls.chart_title, 'h-2')}>Посещаемость</h1>
             <div className={cls.chart_controls}>
               <Select
                 onChange={(_, raw) => handeleChangeStatsId(raw)}

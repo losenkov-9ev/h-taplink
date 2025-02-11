@@ -34,6 +34,8 @@
   }
   .statisticLinkItem_deleted_button {
     border-radius: 12px;
+    color: var(--text);
+
     &:not(:hover) {
       background-color: #fff;
     }
@@ -118,6 +120,7 @@
     transition: var(--transition);
 
     span:first-child {
+      color: var(--text);
       max-width: 200px;
       white-space: nowrap;
       overflow: hidden;

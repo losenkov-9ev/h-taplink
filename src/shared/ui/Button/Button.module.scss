@@ -1,3 +1,5 @@
+@forward '../../../workflows/admin/app/styles/reset.scss';
+
 .button {
   background-color: var(--button);
   transition: var(--transition);
